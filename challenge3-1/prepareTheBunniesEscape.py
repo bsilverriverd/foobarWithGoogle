@@ -52,10 +52,3 @@ def solution(map):
 					removeDict[(nx, ny)] = val+1
 
 	return path[-1][-1]
-
-#import sys
-#import ast
-#filename = sys.argv[1]
-#f = open(filename, "r")
-#test = ast.literal_eval(f.read())
-#print(solution(test))
