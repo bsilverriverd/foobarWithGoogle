@@ -21,9 +21,10 @@ def solution(banana_list):
 
 	degree = {}
 	for vertex in adjacencyList:
-		degree[vertex] = len(adjacencyList[vertex])
+		if len(adjacencyList[vertex]) != 0:
+			degree[vertex] = len(adjacencyList[vertex])
 
-	while adjacencyList:
+	while degree:
 		minDegree = min(degree.values())
 
 		if minDegree == 0:
@@ -47,12 +48,17 @@ def solution(banana_list):
 			if minDegreeVertex in adjacencyList[vertex]:
 				adjacencyList[vertex].remove(minDegreeVertex)
 				degree[vertex] = degree[vertex] - 1
+				if degree[vertex] == 0:
+					del degree[vertex]
 			if neighborMinDegreeVertex in adjacencyList[vertex]:
 				adjacencyList[vertex].remove(neighborMinDegreeVertex)
 				degree[vertex] = degree[vertex] - 1
+				if degree[vertex] == 0:
+					del degree[vertex]
 
 	return len(adjacencyList)
 
 #print(solution([1, 1]))
 #print(solution([1, 7, 3, 21, 13, 19]))
 #print(solution([1]))
+#print(solution([1, 3, 21, 23]))
